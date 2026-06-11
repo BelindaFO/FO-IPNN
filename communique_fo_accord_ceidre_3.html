@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accord CEIDRE : ce qui change, ce qui reste — FO IPNN</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #1a1a1a;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 8px;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 2.5px solid #005a9c;
+    }
+
+    .logo-wrap { flex-shrink: 0; }
+    .logo-wrap img { height: 80px; width: auto; display: block; }
+
+    .header-title { flex: 1; }
+
+    .header-title h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #c0392b;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.25;
+    }
+
+    .date-badge {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      background: #005a9c;
+      padding: 3px 12px;
+      border-radius: 4px;
+    }
+
+    /* INTRO */
+    .intro {
+      background: transparent;
+      color: #1a4a7a;
+      padding: 0;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    /* SECTIONS */
+    .section {
+      border-radius: 6px;
+      margin-bottom: 1.1rem;
+      overflow: hidden;
+      border: 0.5px solid rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.65rem 1.1rem;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .section-header i { font-size: 20px; }
+
+    .section-body {
+      padding: 1rem 1.25rem;
+      font-size: 14px;
+      line-height: 1.75;
+      background: #fff;
+    }
+
+    .section-body p + p { margin-top: 0.6rem; }
+
+    /* Section couleurs */
+    .sec-green .section-header { background: #2e7d32; color: #fff; }
+    .sec-green .section-header i { color: #a5d6a7; }
+
+    .sec-blue .section-header { background: #1565c0; color: #fff; }
+    .sec-blue .section-header i { color: #90caf9; }
+
+    .sec-amber .section-header { background: #5c4b1e; color: #fff; }
+    .sec-amber .section-header i { color: #ffe082; }
+
+    .sec-red .section-header { background: #b71c1c; color: #fff; }
+    .sec-red .section-header i { color: #ef9a9a; }
+
+    /* TAGS */
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 0.75rem;
+    }
+
+    .tag {
+      font-size: 13px;
+      padding: 4px 13px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    .tag-green { background: #e8f5e9; color: #1b5e20; }
+    .tag-blue  { background: #e3f2fd; color: #0d47a1; }
+
+    /* HIGHLIGHT */
+    .hl { font-weight: 700; }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      margin-top: 1.75rem;
+      padding-top: 0.9rem;
+      font-size: 13px;
+      font-style: italic;
+      color: #1a4a7a;
+      border-top: 2px solid #1a4a7a;
+    }
+
+    /* PRINT */
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; padding: 1cm; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- EN-TÊTE -->
+  <div class="header">
+    <div class="logo-wrap">
+      <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/06/Sans-titre-30-avril-2026-a-13.13.56-1.png" alt="Logo FO IPNN">
+    </div>
+    <div class="header-title">
+      <h1>Accord CEIDRE : ce qui change,<br>ce qui reste</h1>
+      <span class="date-badge">Communiqué — juillet 2026</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    Suite à la réorganisation de 2024, la direction a décidé de changer les règles sur vos déplacements terrain. Voici ce que vous devez savoir.
+  </div>
+
+  <!-- SECTION 1 : CE QUI RESTE -->
+  <div class="section sec-green">
+    <div class="section-header">
+      <i class="ti ti-circle-check" aria-hidden="true"></i>
+      Ce qui reste identique
+    </div>
+    <div class="section-body">
+      <p>Toutes les règles de l'accord signé en 2017 sont maintenues :</p>
+      <div class="tag-list">
+        <span class="tag tag-green">Remboursement frais de déplacement (barème Savoie B2)</span>
+        <span class="tag tag-green">Indemnités de Grand Déplacement (IGD)</span>
+        <span class="tag tag-green">Indemnités à l'international</span>
+        <span class="tag tag-green">Repas de midi</span>
+        <span class="tag tag-green">Récupération pour longs trajets</span>
+      </div>
+      <p style="margin-top:0.85rem;">Rien ne change sur les montants ni sur les conditions d'attribution.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 2 : CE QUI ÉVOLUE -->
+  <div class="section sec-blue">
+    <div class="section-header">
+      <i class="ti ti-refresh" aria-hidden="true"></i>
+      Ce qui évolue
+    </div>
+    <div class="section-body">
+      <p>Depuis le 1er juillet 2026, ce n'est plus le <span class="hl">« CEIDRE »</span> qui est l'entité de référence, mais la <span class="hl">Direction Supply Chain (DSC)</span> et la <span class="hl">Direction Technique (DT)</span>.</p>
+      <p>Si vous exercez des activités de surveillance ou d'inspection terrain dans l'une de ces deux directions, vous continuez à bénéficier exactement des mêmes droits.</p>
+      <p>La Direction Technique bénéficie en plus d'une liste clarifiée d'activités éligibles :</p>
+      <div class="tag-list">
+        <span class="tag tag-blue">Laboratoires</span>
+        <span class="tag tag-blue">Géotechnique</span>
+        <span class="tag tag-blue">Génie civil</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 : DUE -->
+  <div class="section sec-amber">
+    <div class="section-header">
+      <i class="ti ti-file-description" aria-hidden="true"></i>
+      Une Décision à la place d'un accord : FO s'y oppose
+    </div>
+    <div class="section-body">
+      <p>L'accord collectif de 2017 est devenu caduc avec la disparition du CEIDRE. La Direction a choisi de le remplacer par une <span class="hl">Décision Unilatérale de l'Employeur (DUE)</span>. C'est la Direction seule qui décide, sans négociation avec les syndicats.</p>
+      <p>L'ensemble des organisations syndicales est opposé à cette démarche. Elles revendiquent la conclusion d'un <span class="hl">nouvel accord collectif</span>, qui offrirait de meilleures garanties de pérennité pour les salariés.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 4 : CE QUE RÉCLAME FO -->
+  <div class="section sec-red">
+    <div class="section-header">
+      <i class="ti ti-hand-stop" aria-hidden="true"></i>
+      Ce que réclame FO pour vous
+    </div>
+    <div class="section-body">
+      <p>Suite à la réorganisation de 2024, des salariés ont été intégrés à la DSC sans bénéficier des dispositions de l'accord 2017 — alors qu'ils effectuent eux aussi des déplacements terrain réguliers.</p>
+      <p>Toutes les OS demandent que ces salariés soient inclus dans le dispositif. <span class="hl">La Direction a refusé cette extension.</span></p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">Des questions ? Contactez vos représentants FO IPNN</div>
+
+</div>
+
+</body>
+</html>
