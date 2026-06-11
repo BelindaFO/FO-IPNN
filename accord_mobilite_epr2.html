@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accord Mobilité Chantiers EPR2 – FO Énergie IPNN</title>
+<style>
+  :root {
+    --fo-red: #E8192C;
+    --fo-teal: #007C7C;
+    --fo-teal-light: #009999;
+    --fo-teal-pale: #E6F4F4;
+    --fo-teal-mid: #CCE9E9;
+    --fo-dark: #1A2E2E;
+    --fo-white: #FFFFFF;
+    --fo-grey: #F5F5F5;
+    --fo-text: #222222;
+    --fo-muted: #555555;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #F0F6F6;
+    color: var(--fo-text);
+    line-height: 1.65;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--fo-dark);
+    color: var(--fo-white);
+    padding: 0;
+    border-bottom: 5px solid var(--fo-red);
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 24px 32px;
+  }
+
+  .logo-wrap img {
+    height: 80px;
+    display: block;
+  }
+
+  .header-text h1 {
+    font-size: 1.85rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+  .header-text h1 span { color: var(--fo-red); }
+
+  .header-text .subtitle {
+    margin-top: 6px;
+    font-size: 0.95rem;
+    color: #9dd4d4;
+    font-weight: 400;
+  }
+
+  .badge-date {
+    margin-left: auto;
+    text-align: center;
+    background: var(--fo-red);
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ── HERO BAND ── */
+  .hero-band {
+    background: var(--fo-teal);
+    color: var(--fo-white);
+    text-align: center;
+    padding: 22px 32px;
+  }
+  .hero-band p {
+    max-width: 860px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+  }
+  .hero-band strong { color: #b3e8e8; }
+
+  /* ── LAYOUT ── */
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+  }
+
+  /* ── CHAPTER HEADINGS ── */
+  .chapter-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 52px 0 20px;
+  }
+  .chapter-heading .ch-num {
+    background: var(--fo-red);
+    color: #fff;
+    font-weight: 900;
+    font-size: 1rem;
+    border-radius: 6px;
+    padding: 4px 12px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .chapter-heading h2 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--fo-teal);
+    border-bottom: 3px solid var(--fo-teal-mid);
+    padding-bottom: 6px;
+    flex: 1;
+  }
+
+  /* ── ARTICLE HEADING ── */
+  h3.art-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--fo-dark);
+    margin: 30px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  h3.art-title::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 18px;
+    background: var(--fo-teal);
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  h4.sub-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--fo-teal);
+    margin: 22px 0 8px;
+  }
+
+  p { margin-bottom: 10px; font-size: 0.95rem; }
+
+  /* ── KEY-POINT BOX ── */
+  .keypoint {
+    background: var(--fo-teal-pale);
+    border-left: 5px solid var(--fo-teal);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 14px 0;
+    font-size: 0.94rem;
+  }
+  .keypoint strong { color: var(--fo-teal); }
+
+  /* ── HIGHLIGHT (red) ── */
+  .highlight-red {
+    background: #FFF0F1;
+    border-left: 5px solid var(--fo-red);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 14px 0;
+    font-size: 0.94rem;
+  }
+  .highlight-red strong { color: var(--fo-red); }
+
+  /* ── CARDS GRID ── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .card {
+    background: var(--fo-white);
+    border: 1px solid var(--fo-teal-mid);
+    border-top: 4px solid var(--fo-teal);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .card.red-top { border-top-color: var(--fo-red); }
+  .card .card-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--fo-teal);
+    margin-bottom: 6px;
+  }
+  .card.red-top .card-label { color: var(--fo-red); }
+  .card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .card p { font-size: 0.88rem; color: var(--fo-muted); margin: 0; }
+
+  /* ── TABLE ── */
+  .fo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.9rem;
+  }
+  .fo-table thead tr { background: var(--fo-teal); color: #fff; }
+  .fo-table thead th { padding: 11px 14px; text-align: left; font-weight: 700; }
+  .fo-table tbody tr:nth-child(even) { background: var(--fo-teal-pale); }
+  .fo-table tbody tr:nth-child(odd) { background: var(--fo-white); }
+  .fo-table td { padding: 10px 14px; border-bottom: 1px solid var(--fo-teal-mid); vertical-align: top; }
+  .fo-table td:first-child { font-weight: 600; }
+
+  /* ── BULLET LIST ── */
+  ul.fo-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 14px;
+  }
+  ul.fo-list li {
+    padding: 6px 0 6px 22px;
+    position: relative;
+    font-size: 0.93rem;
+    border-bottom: 1px dashed #dce8e8;
+  }
+  ul.fo-list li:last-child { border-bottom: none; }
+  ul.fo-list li::before {
+    content: '▶';
+    color: var(--fo-teal);
+    font-size: 0.65rem;
+    position: absolute;
+    left: 4px;
+    top: 9px;
+  }
+
+  /* ── CHANTIER PILLS ── */
+  .sites {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+  }
+  .site-pill {
+    background: var(--fo-teal);
+    color: #fff;
+    border-radius: 20px;
+    padding: 5px 16px;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  /* ── INFO BOX ── */
+  .info-box {
+    display: flex;
+    gap: 14px;
+    background: #fff8e1;
+    border: 1px solid #f0c040;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.9rem;
+  }
+  .info-box .icon { font-size: 1.4rem; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--fo-dark);
+    color: #9dd4d4;
+    text-align: center;
+    padding: 28px 20px;
+    font-size: 0.85rem;
+    border-top: 5px solid var(--fo-red);
+  }
+  footer strong { color: var(--fo-white); }
+  footer a { color: var(--fo-teal-light); text-decoration: none; }
+
+  /* ── DIVIDER ── */
+  hr.fo-hr {
+    border: none;
+    border-top: 2px solid var(--fo-teal-mid);
+    margin: 40px 0 0;
+  }
+
+  /* ── INTRO SECTION ── */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  @media(max-width: 700px) {
+    .intro-grid { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .header-inner { flex-wrap: wrap; }
+    .badge-date { margin-left: 0; }
+  }
+
+  .stat-card {
+    background: var(--fo-white);
+    border-radius: 10px;
+    border: 1px solid var(--fo-teal-mid);
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-card .stat-num {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--fo-teal);
+    line-height: 1;
+  }
+  .stat-card .stat-label { font-size: 0.85rem; color: var(--fo-muted); margin-top: 6px; }
+
+  /* ── ACCORDION ── */
+  details {
+    background: var(--fo-white);
+    border: 1px solid var(--fo-teal-mid);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  details summary {
+    cursor: pointer;
+    padding: 14px 18px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: var(--fo-teal-pale);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    user-select: none;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after {
+    content: '＋';
+    margin-left: auto;
+    color: var(--fo-teal);
+    font-size: 1.2rem;
+  }
+  details[open] summary::after { content: '－'; }
+  details .details-body { padding: 16px 20px; }
+
+  /* ── AMOUNT TABLE ── */
+  .amount-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.88rem;
+  }
+  .amount-table th {
+    background: var(--fo-teal);
+    color: #fff;
+    padding: 9px 12px;
+    text-align: left;
+  }
+  .amount-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #dce8e8;
+  }
+  .amount-table tr:nth-child(even) td { background: var(--fo-teal-pale); }
+  .amount-note { font-size: 0.8rem; color: var(--fo-muted); margin-top: 6px; }
+
+  .bold-teal { color: var(--fo-teal); font-weight: 700; }
+  .bold-red { color: var(--fo-red); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════ HEADER ════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <img src="FO_2024_IPNN__1_.png" alt="FO Énergie IPNN">
+    </div>
+    <div class="header-text">
+      <h1>Accord Mobilité<br><span>Chantiers EPR2</span></h1>
+      <p class="subtitle">Ce que vous devez savoir — Expliqué par FO Énergie IPNN</p>
+    </div>
+    <div class="badge-date">Projet<br>d'accord<br>2026–2036</div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════ HERO ════════════════════════════════ -->
+<div class="hero-band">
+  <p>Cet accord définit les <strong>mesures d'accompagnement financier et pratique</strong> pour tout salarié en CDI qui rejoint les chantiers EPR2 de <strong>Penly, Gravelines ou Bugey</strong> entre 2026 et 2036.</p>
+</div>
+
+<!-- ════════════════════════════════ PAGE ════════════════════════════════ -->
+<div class="page">
+
+  <!-- ── CHIFFRES CLÉS ── -->
+  <div class="intro-grid">
+    <div class="stat-card">
+      <div class="stat-num">3</div>
+      <div class="stat-label">sites concernés<br>Penly · Gravelines · Bugey</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">10 ans</div>
+      <div class="stat-label">durée de l'accord<br>jusqu'au 1ᵉʳ juillet 2036</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">CDI</div>
+      <div class="stat-label">Statut et non statutaires<br>toutes entités d'origine</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       CHAPITRE 1 – CONTEXTE
+  ══════════════════════════════════════════════════════════ -->
+  <div class="chapter-heading">
+    <span class="ch-num">CHAP. 1</span>
+    <h2>Contexte — Pourquoi cet accord ?</h2>
+  </div>
+
+  <p>Le programme de construction EPR2 est entré dans sa <strong>phase opérationnelle</strong>. Le chantier de Penly est déjà ouvert ; celui de <strong>Gravelines ouvrira à l'automne 2026</strong>, puis <strong>Bugey en 2028</strong>.</p>
+
+  <div class="sites">
+    <span class="site-pill">🔵 Penly – en cours</span>
+    <span class="site-pill">🟡 Gravelines – automne 2026</span>
+    <span class="site-pill">🟢 Bugey – 2028</span>
+  </div>
+
+  <div class="keypoint">
+    <strong>L'objectif principal</strong> : attirer et fidéliser les bons profils sur chaque site, en proposant un <strong>dispositif d'accompagnement stable et incitatif</strong> sur toute la durée du chantier.
+  </div>
+
+  <ul class="fo-list">
+    <li>Sécuriser le gréement des chantiers selon l'attractivité de chaque région</li>
+    <li>Donner de la visibilité aux salariés sur les mesures disponibles dès leur candidature</li>
+    <li>Inciter et faciliter les mobilités volontaires</li>
+    <li>Fidéliser les salariés sur le long terme grâce à des primes de maintien</li>
+    <li>Répondre aux préoccupations familiales (logement, emploi du conjoint, scolarité, crèche)</li>
+  </ul>
+
+  <!-- ══════════════════════════════════════════════════════════
+       CHAPITRE 2 – ACCOMPAGNEMENT
+  ══════════════════════════════════════════════════════════ -->
+  <div class="chapter-heading">
+    <span class="ch-num">CHAP. 2</span>
+    <h2>L'accompagnement des salariés</h2>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-label">Information</div>
+      <h4>📋 Plaquette d'information</h4>
+      <p>Une plaquette détaillant toutes les mesures sera publiée dans les <strong>2 mois</strong> suivant la signature, accessible sur la page VEOL EPR2.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Suivi personnalisé</div>
+      <h4>👤 Votre interlocuteur RH</h4>
+      <p>Le <strong>RRH de l'entité prenante</strong> calcule et verse vos indemnités et répond à toutes vos questions.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Convention</div>
+      <h4>🤝 Engagement réciproque</h4>
+      <p>Une convention tripartite (salarié / unité cédante / entité prenante) peut être établie pour <strong>sécuriser le retour</strong> dans l'unité d'origine.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       CHAPITRE 3 – MESURES FINANCIÈRES
+  ══════════════════════════════════════════════════════════ -->
+  <div class="chapter-heading">
+    <span class="ch-num">CHAP. 3</span>
+    <h2>Les mesures d'accompagnement financières</h2>
+  </div>
+
+  <!-- ── 3.1 Mobilité avec déménagement ── -->
+  <h3 class="art-title">Article 3.1 — Mobilité géographique avec déménagement</h3>
+
+  <!-- Pack Découverte -->
+  <details open>
+    <summary>🗺️ 3.1.1 — Pack Découverte &amp; voyage exploratoire en famille</summary>
+    <div class="details-body">
+      <p>Avant de vous décider, vous pouvez bénéficier du <strong>Pack Découverte</strong> et d'un <strong>voyage exploratoire en famille</strong> (conjoint + enfants à charge) pour visiter l'environnement du futur chantier.</p>
+      <ul class="fo-list">
+        <li>Durée : 3 jours max, 2 nuits sur place, idéalement le week-end</li>
+        <li>Transport remboursé : aller-retour 2ᵉ classe SNCF</li>
+        <li>Hébergement + repas : remboursés dans la limite des barèmes EDF</li>
+        <li>Location voiture : catégorie C (jusqu'à 2 enfants), catégorie supérieure à partir de 3 enfants</li>
+      </ul>
+      <div class="info-box">
+        <span class="icon">ℹ️</span>
+        <span>Si le voyage se fait en semaine, le salarié doit poser des <strong>congés</strong>. Les frais sont remboursés sur note de frais après validation managériale.</span>
+      </div>
+    </div>
+  </details>
+
+  <!-- Indemnité statut -->
+  <details>
+    <summary>💰 3.1.2 — Indemnité de changement de résidence (Art. 30 du Statut)</summary>
+    <div class="details-body">
+      <div class="highlight-red">
+        <strong>Montant : 2 mois de salaire brut</strong> versés après déménagement (une avance est possible).<br>
+        En cas de couple de salariés EDF, <strong>un seul</strong> perçoit l'indemnité.
+      </div>
+      <p>Cette indemnité compense les frais liés au changement de résidence principale imposé par la mobilité professionnelle, en application du statut national du personnel des IEG.</p>
+    </div>
+  </details>
+
+  <!-- Pack Mobilité Facilité -->
+  <details>
+    <summary>🧳 3.1.3 — Pack Mobilité Facilité</summary>
+    <div class="details-body">
+      <p>Ce pack de services prend en charge <strong>les démarches pratiques</strong> liées au déménagement :</p>
+      <ul class="fo-list">
+        <li>Organisation du déménagement</li>
+        <li>Aide à la recherche d'un logement</li>
+        <li>Gestion du bien quitté</li>
+        <li>Aide à la recherche d'emploi pour le conjoint</li>
+        <li>Prestations facilitant l'installation dans le nouveau logement</li>
+      </ul>
+      <p>Le montant est calculé en Unités de Valeur (UV), validé par le RRH selon la situation individuelle.</p>
+    </div>
+  </details>
+
+  <!-- Capital Mobilité Modulé -->
+  <details open>
+    <summary>💎 3.1.4 — Capital Mobilité Modulé (CMM) — La prime clé</summary>
+    <div class="details-body">
+      <div class="keypoint">
+        <strong>Réservé aux salariés qui déménagent et ne sont PAS logés dans le parc EDF.</strong><br>
+        La nature de la mobilité diffère selon le site : <strong>Penly = prioritaire</strong> · <strong>Gravelines = encouragée</strong> · <strong>Bugey = encouragée</strong>.
+      </div>
+
+      <h4 class="sub-title">Montants indicatifs du CMM au 1ᵉʳ juillet 2026</h4>
+      <table class="amount-table">
+        <thead>
+          <tr>
+            <th>Site</th>
+            <th>Type de mobilité</th>
+            <th>Enfant suppl. au-delà du 3ᵉ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Penly</td>
+            <td>Mobilité <strong>prioritaire</strong></td>
+            <td>+ 7 920 €</td>
+          </tr>
+          <tr>
+            <td>Gravelines</td>
+            <td>Mobilité <strong>encouragée</strong></td>
+            <td>+ 6 707 €</td>
+          </tr>
+          <tr>
+            <td>Bugey</td>
+            <td>Mobilité <strong>encouragée</strong></td>
+            <td>+ 7 992 €</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="amount-note">* Le montant de la MIPPE (fraction versée lors du déménagement) dépend du salaire individuel. Montants détaillés en Annexe 2 de l'accord.</p>
+
+      <h4 class="sub-title">Prime de maintien sur chantier</h4>
+      <div class="highlight-red">
+        <strong>Fidélité récompensée !</strong> Si vous êtes toujours présent sur le chantier en 4ᵉ et 5ᵉ année, vous percevez la <strong>fraction annuelle du CMM</strong> à chaque date anniversaire de votre mobilité (dans la limite de 5 ans).
+      </div>
+      <ul class="fo-list">
+        <li>Le versement est maintenu si vous changez de poste au sein du même chantier</li>
+        <li>Interrompu en cas de départ du site ou d'intégration dans le parc logement</li>
+        <li>En cas de mobilité vers un autre site EPR2 : nouveau CMM initialisé</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- Zone d'habitat -->
+  <details>
+    <summary>📍 3.1.5 — Zone d'habitat de référence</summary>
+    <div class="details-body">
+      <p>Pour bénéficier des aides et des prêts à l'accession à la propriété, votre domicile doit se situer dans la <strong>zone d'habitat définie pour chaque chantier</strong>.</p>
+      <div class="keypoint">
+        <strong>Critère : 45 minutes maximum</strong> (référence ViaMichelin) par trajet simple entre votre domicile et l'entrée du site.<br>
+        Les périmètres sont présentés en Annexe 1 de l'accord.
+      </div>
+      <p>Les salariés de cette zone bénéficient de l'<strong>Allocation Spéciale Centrale Thermique (ASCT)</strong>. Pour Bugey, l'ASCT est applicable dès l'ouverture officielle du chantier.</p>
+    </div>
+  </details>
+
+  <!-- Régime logement -->
+  <details>
+    <summary>🏠 3.1.6 — Dispositions selon le régime de logement</summary>
+    <div class="details-body">
+      <table class="fo-table">
+        <thead>
+          <tr>
+            <th>Situation logement</th>
+            <th>Dispositif applicable</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>📦 Location au parc EDF</td>
+            <td>Pas de CMM · Loyer plafonné à <strong>15 % du salaire</strong></td>
+          </tr>
+          <tr>
+            <td>🏡 Acquisition hors parc EDF</td>
+            <td><strong>CMM ouvert</strong></td>
+          </tr>
+          <tr>
+            <td>🔑 Location hors parc EDF</td>
+            <td><strong>CMM ouvert</strong> (hors célibat géographique)</td>
+          </tr>
+          <tr>
+            <td>🧳 Célibat géographique hors parc</td>
+            <td>Pas de CMM · <strong>Indemnité mensuelle</strong> (voir art. 3.2)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>EDF dispose d'un <strong>parc de logements</strong> réservés à proximité de chaque chantier (baux courts ou BEFA). Accessible aux nouvelles recrues comme aux salariés en mobilité interne.</p>
+    </div>
+  </details>
+
+  <!-- Compensation pertes de primes -->
+  <details>
+    <summary>⚖️ 3.1.7 — Compensation des pertes de primes et indemnités</summary>
+    <div class="details-body">
+      <p>Si votre mutation entraîne la <strong>perte de primes permanentes</strong> liées à votre ancienne fonction (à caractère de salaire), vous bénéficiez d'une <strong>compensation</strong> selon la note DRH A 21-28 (§F).</p>
+      <div class="info-box">
+        <span class="icon">⚠️</span>
+        <span>Si votre nouvel emploi est prévu avec des astreintes, la date probable de prise d'astreinte est prise en compte dès la mutation pour calculer une compensation ajustée.</span>
+      </div>
+    </div>
+  </details>
+
+  <!-- Perte emploi conjoint -->
+  <details>
+    <summary>👫 3.1.8 — Indemnité de perte d'emploi du conjoint (renforcée)</summary>
+    <div class="details-body">
+      <div class="highlight-red">
+        <strong>Dispositif renforcé spécifiquement pour les chantiers EPR2 !</strong><br>
+        L'indemnité habituelle (1 an) est <strong>étendue à 2 ans</strong> si la recherche d'emploi est infructueuse à l'issue de la 1ᵉʳᵉ année.
+      </div>
+      <ul class="fo-list">
+        <li>Suspendue pendant un travail temporaire (CDD / intérim)</li>
+        <li>Stoppée en cas de CDI (reprend si rupture en période d'essai)</li>
+        <li>Montant actualisé à chaque évolution du Salaire National de Base</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- Aide scolarité -->
+  <details>
+    <summary>🎓 3.1.9 — Aide à la scolarité des enfants</summary>
+    <div class="details-body">
+      <p>Si votre enfant <strong>reste dans la région d'origine</strong> pour y poursuivre ses études et que vous devez lui louer un logement indépendant :</p>
+      <div class="keypoint">
+        <strong>Aide maximale : 300 €/mois</strong> (loyer supporté déduction faite de l'APL obtenue).<br>
+        Versée sur justificatifs, aussi longtemps que dure le droit à l'Aide aux Frais d'Études (AFE). Renouvelée chaque année jusqu'à la fin du cycle.
+      </div>
+      <p>Non cumulable avec les dispositions de la note DRH 18-022 AFE 07 2018.</p>
+    </div>
+  </details>
+
+  <!-- Petite enfance -->
+  <details>
+    <summary>🍼 3.1.10 — Accompagnement petite enfance</summary>
+    <div class="details-body">
+      <ul class="fo-list">
+        <li><strong>Places en crèche réservées</strong> par EDF dans les réseaux du marché cadre (nombre adapté à la demande)</li>
+        <li><strong>CESU</strong> : jusqu'à 100 × SMIC brut horaire par an pour financer la garde à domicile (jusqu'aux 3 ans de l'enfant)</li>
+      </ul>
+      <p>Les deux dispositifs sont alternatifs : crèche co-financée <strong>OU</strong> CESU.</p>
+    </div>
+  </details>
+
+  <!-- ── 3.2 Célibat géographique ── -->
+  <h3 class="art-title">Article 3.2 — Mobilité en célibat géographique</h3>
+
+  <div class="keypoint">
+    <strong>Définition :</strong> Le salarié se loge seul à proximité du chantier, mais sa famille reste dans la région d'origine. Ce choix est <strong>toujours à l'initiative du salarié</strong>, jamais imposé par l'entreprise.
+  </div>
+
+  <div class="cards">
+    <div class="card red-top">
+      <div class="card-label">Indemnité mensuelle</div>
+      <h4>💶 Plafond : 1 100 €/mois</h4>
+      <p>Calculé selon la note DRH A 24-29, sur la base du plafond <em>« France hors Paris, Marseille, Lyon »</em>.</p>
+    </div>
+    <div class="card red-top">
+      <div class="card-label">Évolution possible</div>
+      <h4>🔄 Décider de déménager</h4>
+      <p>Si vous changez d'avis et décidez de déménager, vous basculerez sur les dispositions de droit commun de la note DRH A 24-29.</p>
+    </div>
+  </div>
+
+  <!-- ── 3.3 Déplacements domicile-travail ── -->
+  <h3 class="art-title">Article 3.3 — Indemnités kilométriques domicile-travail</h3>
+
+  <p>En attendant la mise en place de navettes et parkings relais, tous les salariés (mobiles et nouvelles recrues) bénéficient d'<strong>indemnités kilométriques</strong> pour leurs trajets domicile-chantier.</p>
+
+  <table class="fo-table">
+    <thead>
+      <tr>
+        <th>Paramètre</th>
+        <th>Valeur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Franchise</td>
+        <td>5 km par trajet</td>
+      </tr>
+      <tr>
+        <td>Plafond</td>
+        <td>40 km franchise incluse par trajet simple</td>
+      </tr>
+      <tr>
+        <td>Base de calcul</td>
+        <td>Aller-Retour par jour travaillé en présentiel sur le chantier</td>
+      </tr>
+      <tr>
+        <td>Éligibilité</td>
+        <td>Tous collèges, mobiles et nouvelles recrues</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    <span class="icon">ℹ️</span>
+    <span>Ces dispositions seront <strong>obligatoirement révisées</strong> lors de la mise en place des navettes et parkings relais pour en favoriser l'usage.</span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       CHAPITRE 4 – DISPOSITIONS FINALES
+  ══════════════════════════════════════════════════════════ -->
+  <div class="chapter-heading">
+    <span class="ch-num">CHAP. 4</span>
+    <h2>Dispositions finales</h2>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-label">Champ d'application</div>
+      <h4>👥 Qui est concerné ?</h4>
+      <p>Tous salariés en <strong>CDI</strong> (statutaires et non statutaires) des unités Projet, Construction et Ingénierie Nucléaire, quelle que soit l'entité d'origine.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Durée</div>
+      <h4>📅 Entrée en vigueur</h4>
+      <p>Dès le lendemain du dépôt. <strong>Rétroactif au 1ᵉʳ janvier 2026</strong> pour Gravelines et Bugey. Terme : <strong>1ᵉʳ juillet 2036</strong>.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Suivi</div>
+      <h4>🔍 Comité de suivi annuel</h4>
+      <p>Réunion annuelle entre la Direction (DPPI) et 2 représentants de chaque OS signataire, avec un REX après la 1ʳᵉ année.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Révision</div>
+      <h4>✏️ Clause de revoyure</h4>
+      <p>Réunion possible dans les 3 mois si des modifications légales impactent l'accord. Tout avenant est formalisé par écrit.</p>
+    </div>
+  </div>
+
+  <div class="highlight-red">
+    <strong>⚠️ Point d'attention :</strong> Aucune mesure ne peut être accordée à un salarié muté <strong>après le 1ᵉʳ juillet 2036</strong>. Le dernier versement de capital est prévu au plus tard le <strong>30 juin 2041</strong>.
+  </div>
+
+  <hr class="fo-hr">
+
+  <!-- ── RÉCAP FO ── -->
+  <div class="chapter-heading" style="margin-top:40px">
+    <span class="ch-num" style="background:var(--fo-red)">FO</span>
+    <h2 style="color:var(--fo-red)">Ce que FO retient de cet accord</h2>
+  </div>
+
+  <div class="keypoint" style="border-color:var(--fo-red); background:#FFF0F1;">
+    <strong style="color:var(--fo-red)">Un accord global sur 10 ans</strong>, couvrant les trois chantiers EPR2, avec des mesures étendues par rapport à l'accord Penly 2023-2026 : indemnité conjoint portée à 2 ans, primes de maintien en 4ᵉ et 5ᵉ année, et célibat géographique encadré à 1 100 €/mois.
+  </div>
+
+  <ul class="fo-list">
+    <li><span class="bold-teal">2 mois de salaire brut</span> d'indemnité statutaire de déménagement</li>
+    <li><span class="bold-teal">Capital Mobilité Modulé</span> avec prime de maintien en 4ᵉ et 5ᵉ année</li>
+    <li><span class="bold-teal">Voyage exploratoire</span> en famille avant de s'engager</li>
+    <li><span class="bold-teal">Parc de logements EDF</span> avec loyer plafonné à 15 %</li>
+    <li><span class="bold-teal">Zone d'habitat étendue</span> à 45 min du chantier avec ASCT</li>
+    <li><span class="bold-red">Indemnité conjoint étendue à 2 ans</span> si recherche infructueuse</li>
+    <li><span class="bold-teal">300 €/mois</span> d'aide pour le logement étudiant d'un enfant resté dans la région d'origine</li>
+    <li><span class="bold-teal">Célibat géographique</span> : jusqu'à 1 100 €/mois d'indemnité mensuelle</li>
+    <li><span class="bold-teal">Indemnités kilométriques</span> domicile-travail pour tous</li>
+    <li><span class="bold-teal">Comité de suivi annuel</span> avec les OS signataires</li>
+  </ul>
+
+</div><!-- /page -->
+
+<!-- ════════════════════════════════ FOOTER ════════════════════════════════ -->
+<footer>
+  <p><strong>FO Énergie IPNN – Siège EDF</strong></p>
+  <p style="margin-top:8px;">Des questions sur cet accord ? Contactez vos délégués FO ou le service RH de votre entité.</p>
+  <p style="margin-top:8px; font-size:0.8rem; color:#5a9090;">Document d'information syndicale — Projet d'accord transmis le 01/06/2026 — <em>Agir, ne pas subir !</em></p>
+</footer>
+
+</body>
+</html>
