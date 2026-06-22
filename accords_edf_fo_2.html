@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accords EDF SA 2027 – Information Salariés | FO Énergie IPNN</title>
+  <style>
+    :root {
+      --fo-red:    #E8192C;
+      --fo-teal:   #00A99D;
+      --fo-teal-2: #007F76;
+      --bg:        #F5F5F5;
+      --bg-white:  #FFFFFF;
+      --text:      #1A1A1A;
+      --muted:     #5A5A6A;
+      --border:    #D8E0E0;
+      --radius:    8px;
+      --shadow:    0 2px 12px rgba(0,169,157,0.10);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+    /* HEADER */
+    header{background:#fff;border-bottom:4px solid var(--fo-teal);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.10)}
+    .hi{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:10px 24px}
+    .hi img{height:62px;width:auto;display:block;flex-shrink:0}
+    .hdiv{width:2px;height:50px;background:var(--border);flex-shrink:0}
+    .ht h1{font-size:1.12rem;font-weight:800;line-height:1.25}
+    .ht h1 span{color:var(--fo-teal)}
+    .ht p{font-size:.79rem;color:var(--muted);margin-top:3px}
+    .hbadge{margin-left:auto;background:var(--fo-teal);color:#fff;font-weight:800;font-size:.75rem;padding:6px 14px;border-radius:20px;white-space:nowrap}
+    .slogan-bar{background:var(--fo-red);color:#fff;text-align:center;font-size:.77rem;font-style:italic;font-weight:700;padding:5px 16px;letter-spacing:.06em}
+
+    /* TABS */
+    nav.tabs{background:#fff;border-bottom:3px solid var(--fo-teal)}
+    .ti{max-width:1100px;margin:0 auto;display:flex;padding:0 24px;gap:2px;overflow-x:auto}
+    .tab-btn{background:none;border:none;cursor:pointer;padding:14px 20px 11px;font-size:.87rem;font-weight:700;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-3px;transition:color .2s,border-color .2s;white-space:nowrap}
+    .tab-btn:hover{color:var(--fo-teal)}
+    .tab-btn.active{color:var(--fo-teal);border-bottom-color:var(--fo-teal)}
+
+    /* MAIN */
+    main{max-width:1100px;margin:32px auto 60px;padding:0 24px}
+    .section{display:none}
+    .section.active{display:block}
+
+    /* INTRO BANNER */
+    .banner{background:var(--fo-teal);color:#fff;border-radius:var(--radius);padding:24px 28px;margin-bottom:22px;display:flex;gap:18px;align-items:flex-start}
+    .banner .ico{font-size:2rem;flex-shrink:0;margin-top:2px}
+    .banner .tag{display:inline-block;background:var(--fo-red);color:#fff;font-size:.69rem;font-weight:800;padding:3px 10px;border-radius:20px;margin-bottom:8px;letter-spacing:.07em}
+    .banner h2{font-size:1.15rem;font-weight:800;margin-bottom:7px}
+    .banner p{font-size:.88rem;opacity:.93;line-height:1.65}
+    .banner strong{color:#FFE066}
+
+    /* FO RETENIR */
+    .fo-box{background:#fff;border:2px solid var(--fo-teal);border-radius:var(--radius);padding:15px 20px;margin-bottom:20px}
+    .fo-box-title{font-weight:800;font-size:.93rem;margin-bottom:7px;display:flex;align-items:center;gap:6px}
+    .fo-word{color:var(--fo-red)}
+    .fo-box p{font-size:.87rem;line-height:1.72;color:var(--text)}
+    .fo-box strong{color:var(--fo-teal)}
+
+    /* CARDS */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:22px}
+    .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden}
+    .ch{background:var(--fo-teal);color:#fff;padding:13px 18px;display:flex;align-items:center;gap:10px;font-weight:800;font-size:.87rem}
+    .cb{padding:16px 18px;font-size:.87rem;line-height:1.72;color:var(--muted)}
+    .cb p{margin-bottom:8px}
+    .cb p:last-child{margin-bottom:0}
+
+    /* ACCORDION */
+    .acc{margin-bottom:11px}
+    .acc-btn{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:13px 18px;text-align:left;cursor:pointer;font-size:.91rem;font-weight:700;color:var(--text);display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow);transition:background .15s}
+    .acc-btn:hover{background:#F0FAFA}
+    .acc-btn.open{border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom-color:var(--fo-teal);color:var(--fo-teal)}
+    .arrow{transition:transform .25s;color:var(--fo-teal);font-size:.88rem}
+    .acc-btn.open .arrow{transform:rotate(180deg)}
+    .acc-body{display:none;background:#fff;border:1.5px solid var(--border);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:18px 22px;font-size:.87rem;line-height:1.78;color:var(--text);box-shadow:var(--shadow)}
+    .acc-body.open{display:block}
+
+    /* TABLE */
+    table{width:100%;border-collapse:collapse;font-size:.85rem;margin:13px 0}
+    th{background:var(--fo-teal);color:#fff;padding:10px 14px;text-align:left;font-weight:700}
+    td{padding:9px 14px;border-bottom:1px solid var(--border)}
+    tr:nth-child(even) td{background:#F0FAFA}
+    tr:last-child td{border-bottom:none}
+
+    /* AMOUNT */
+    .amount-box{background:#F0FAFA;border-left:4px solid var(--fo-teal);border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0}
+    .amount-box .am{font-size:1.4rem;font-weight:900;color:var(--fo-teal)}
+    .amount-box .lbl{font-size:.78rem;color:var(--muted);margin-top:2px}
+
+    /* EXAMPLE */
+    .ex{background:#FFF8F0;border:1.5px dashed #F5A623;border-radius:8px;padding:13px 18px;margin:11px 0;font-size:.86rem;line-height:1.78}
+    .ex-lbl{font-size:.7rem;font-weight:800;letter-spacing:.09em;color:#E07B00;text-transform:uppercase;margin-bottom:5px;display:block}
+
+    /* ALERTS */
+    .alert{background:#FFF3CD;border-left:4px solid #F5A623;border-radius:0 8px 8px 0;padding:11px 16px;font-size:.86rem;line-height:1.65;margin:11px 0;color:#4A3200}
+    .alert-teal{background:#E8F9F8;border-left-color:var(--fo-teal);color:#003D39}
+    .alert-red{background:#FEE8EA;border-left-color:var(--fo-red);color:#5A0008}
+
+    /* CRITERIA */
+    .crit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:13px;margin:15px 0}
+    .crit-card{background:#fff;border:1.5px solid var(--border);border-top:4px solid var(--fo-teal);border-radius:0 0 var(--radius) var(--radius);padding:14px;box-shadow:var(--shadow)}
+    .cn{font-size:.77rem;font-weight:800;color:var(--fo-teal);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+    .cp{font-size:1.5rem;font-weight:900;color:var(--fo-red);line-height:1;margin-bottom:4px}
+    .cd{font-size:.81rem;color:var(--muted);line-height:1.55}
+    .ct{font-size:.79rem;color:var(--text);margin-top:8px;font-weight:600;line-height:1.55}
+
+    /* PILLS */
+    .pills{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}
+    .pill{background:#fff;border:1.5px solid var(--border);border-radius:24px;padding:7px 16px;font-size:.82rem;font-weight:600;display:flex;align-items:center;gap:7px}
+    .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+    .dt{background:var(--fo-teal)}
+    .do{background:#E67E22}
+
+    /* SECTION TITLE */
+    .stitle{font-size:.96rem;font-weight:800;color:var(--fo-teal);margin:22px 0 12px;display:flex;align-items:center;gap:9px}
+    .stitle::after{content:'';flex:1;height:2px;background:var(--border)}
+
+    /* FOOTER */
+    footer{background:var(--fo-teal);color:rgba(255,255,255,.85);text-align:center;padding:15px 24px;font-size:.79rem;line-height:1.8}
+    footer strong{color:#fff}
+    .fslogan{color:#FFE066;font-style:italic;font-weight:700}
+
+    @media(max-width:640px){
+      .hi{padding:10px 12px;gap:10px}
+      .hbadge{display:none}
+      main{padding:0 12px;margin-top:20px}
+      .banner{flex-direction:column;padding:18px 16px}
+      .grid{grid-template-columns:1fr}
+      .crit-grid{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <img src="data:image/png;base64,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" alt="FO Énergie IPNN" />
+    <div class="hdiv"></div>
+    <div class="ht">
+      <h1>Accords EDF SA 2027 – <span>Ce que vous devez savoir</span></h1>
+      <p>Information salariés rédigée par FO Énergie IPNN / Siège EDF</p>
+    </div>
+    <div class="hbadge">⚡ Exercice 2026–2027</div>
+  </div>
+</header>
+<div class="slogan-bar">Agir, ne pas subir !</div>
+
+<nav class="tabs">
+  <div class="ti">
+    <button class="tab-btn active" onclick="showTab('interess',this)">💰 Intéressement 2026</button>
+    <button class="tab-btn" onclick="showTab('peg',this)">📦 PEG 2027</button>
+    <button class="tab-btn" onclick="showTab('perco',this)">🏖️ PERCO 2027</button>
+    <button class="tab-btn" onclick="showTab('resume',this)">📋 Synthèse</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- INTÉRESSEMENT -->
+<section id="interess" class="section active">
+  <div class="banner">
+    <div class="ico">💰</div>
+    <div>
+      <span class="tag">AVENANT N°2 – ACCORD INTÉRESSEMENT 2024-2026</span>
+      <h2>Intéressement EDF SA – Exercice 2026</h2>
+      <p>L'accord signé le 27 juin 2024 couvre 3 ans. Cet avenant n°2 fixe les objectifs de <strong>l'exercice 2026</strong>. Le versement interviendra <strong>au plus tard le 31 mai 2027</strong>.</p>
+    </div>
+  </div>
+
+  <div class="fo-box">
+    <div class="fo-box-title">Ce qu'il <span class="fo-word">FO</span> retenir :</div>
+    <p>L'intéressement dépend de deux niveaux : <strong>K1</strong> (enveloppe globale selon la performance financière d'EDF) et <strong>K2</strong> (votre part individuelle selon 5 critères opérationnels). Plus les objectifs sont atteints, plus chaque salarié reçoit.</p>
+  </div>
+
+  <div class="acc">
+    <button class="acc-btn" onclick="tog(this)">
+      <span>📊 Critère K1 – L'enveloppe globale (EBITDA Cash – Investissements nets)</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="acc-body">
+      <p>Le K1 détermine l'enveloppe totale disponible. Il est basé sur l'<strong>EBITDA Cash d'EDF SA diminué des investissements nets</strong>. La cible 2026 intègre la hausse des investissements EPR2 et la fiscalité sur les INB.</p>
+      <table>
+        <thead><tr><th>EBITDA Cash – Invest. nets</th><th>K1</th></tr></thead>
+        <tbody>
+          <tr><td>Inférieur à 2,48 Mds€</td><td><strong>75%</strong> (plancher)</td></tr>
+          <tr><td>Entre 2,48 et 3,31 Mds€</td><td>Progression linéaire</td></tr>
+          <tr><td>Égal à 3,31 Mds€</td><td><strong>100%</strong> (cible)</td></tr>
+          <tr><td>Entre 3,31 et 4,14 Mds€</td><td>Progression linéaire</td></tr>
+          <tr><td>≥ 4,14 Mds€</td><td><strong>125%</strong> (maximum)</td></tr>
+        </tbody>
+      </table>
+      <div class="alert">⚠️ Même en dessous de la cible, l'intéressement ne tombe pas à zéro : le plancher est de <strong>75%</strong> dès 2,48 Mds€.</div>
+    </div>
+  </div>
+
+  <div class="stitle">⚙️ Critère K2 – Les 5 indicateurs de performance</div>
+  <p style="font-size:.86rem;color:var(--muted);margin-bottom:14px">Le K2 module votre part individuelle. Poids et objectifs 2026 :</p>
+
+  <div class="crit-grid">
+    <div class="crit-card">
+      <div class="cn">🏭 Disponibilité nucléaire (KD)</div>
+      <div class="cp">10%</div>
+      <div class="cd">Taux de disponibilité du parc nucléaire (hors Flamanville 3) sur toute l'année 2026.</div>
+      <div class="ct">🎯 100% = 75,52% de dispo<br>🏆 Max 120% = ≥ 79,50%<br>⛔ Seuil : &gt; 70%</div>
+    </div>
+    <div class="crit-card">
+      <div class="cn">⚡ Production électrique</div>
+      <div class="cp">25%</div>
+      <div class="cd">TWh produits par EDF SA. Critère le plus lourd du K2.</div>
+      <div class="ct">🎯 100% = 409,5 TWh<br>🏆 Max 120% = ≥ 425 TWh<br>⛔ Seuil : &gt; 385 TWh</div>
+    </div>
+    <div class="crit-card">
+      <div class="cn">📈 Résultat économique (EBIT)</div>
+      <div class="cp">20%</div>
+      <div class="cd">EBIT EDF SA après amortissements (incl. Flamanville 3).</div>
+      <div class="ct">🎯 100% = 8 Mds€<br>🏆 Max 120% = ≥ 10 Mds€<br>⛔ Seuil : &gt; 4 Mds€</div>
+    </div>
+    <div class="crit-card">
+      <div class="cn">🛡️ Santé Sécurité (HPE/LTI)</div>
+      <div class="cp">15%</div>
+      <div class="cd">Ratio HPE / accidents avec arrêt (EDF + prestataires). Plus d'HPE et moins de LTI = meilleur.</div>
+      <div class="ct">🎯 100% = ratio ≥ 3,80<br>🎯 80% = ratio ≥ 3,50<br>⛔ Seuil : ratio &gt; 3,10</div>
+    </div>
+    <div class="crit-card">
+      <div class="cn">🤝 Développement commercial</div>
+      <div class="cp">15%</div>
+      <div class="cd">Contrats "autres" (hors vente élec.) pour 1 000 PDL — 50% particuliers + 50% affaires.</div>
+      <div class="ct">🎯 100% = ≥ 230 / 1000 PDL<br>🎯 50% = 224 | ⛔ Seuil : &gt; 222</div>
+    </div>
+    <div class="crit-card">
+      <div class="cn">🌱 RSE – Flotte élec. + Mixité</div>
+      <div class="cp">15%</div>
+      <div class="cd">Taux d'utilisation VE flotte légère EDF SA (7,5%) + taux de féminisation des embauches (7,5%).</div>
+      <div class="ct">🎯 VE 100% = ≥ 46,70%<br>🎯 Mixité 100% = ≥ 32%</div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-btn" onclick="tog(this)">
+      <span>🔄 Comment l'intéressement est-il réparti entre salariés ?</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="acc-body">
+      <p>La formule 2026 est <strong>semi-hiérarchisée</strong> :</p>
+      <div class="grid" style="margin-top:12px;grid-template-columns:1fr 1fr">
+        <div class="card">
+          <div class="ch">⚖️ 50% – Part uniforme</div>
+          <div class="cb"><p>Proportionnelle au <strong>temps de présence</strong>. Même base pour tous.</p></div>
+        </div>
+        <div class="card">
+          <div class="ch">📊 50% – Part hiérarchisée</div>
+          <div class="cb"><p>Proportionnelle à la <strong>rémunération principale</strong> perçue sur l'exercice.</p></div>
+        </div>
+      </div>
+      <div class="alert alert-teal" style="margin-top:12px">✅ Vous pouvez recevoir l'intéressement en <strong>espèces</strong> ou le placer sur le <strong>PEG ou PERCO</strong> pour bénéficier de l'abondement EDF SA. Versement au plus tard le <strong>31 mai 2027</strong>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PEG -->
+<section id="peg" class="section">
+  <div class="banner">
+    <div class="ico">📦</div>
+    <div>
+      <span class="tag">AVENANT N°29 – RÈGLEMENT PEG</span>
+      <h2>Plan d'Épargne Groupe (PEG) – Abondement 2027</h2>
+      <p>Le PEG est un plan d'épargne salariale <strong>bloqué 5 ans</strong>. EDF SA abonde vos versements du <strong>1er janvier au 31 décembre 2027</strong>.</p>
+    </div>
+  </div>
+
+  <div class="fo-box">
+    <div class="fo-box-title">Ce qu'il <span class="fo-word">FO</span> retenir :</div>
+    <p>EDF SA verse jusqu'à <strong>115 € de bonus sur vos 100 premiers euros</strong> d'intéressement placés, puis 15% au-delà. Les versements volontaires sont abondés à 30% (max 210 € bruts). Les jours CET génèrent aussi un abondement. <strong>Ces plafonds sont communs PEG + PERCO.</strong></p>
+  </div>
+
+  <div class="acc">
+    <button class="acc-btn" onclick="tog(this)">
+      <span>👤 Qui peut bénéficier de l'abondement PEG ?</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="acc-body">
+      <p>Tous les salariés d'EDF SA adhérant au PEG, <strong>sans condition d'ancienneté</strong>.</p>
+      <div class="alert" style="margin-top:10px">⚠️ Les versements après votre <strong>départ d'EDF SA</strong> n'ouvrent plus droit à abondement. Exception : si vous rejoignez une autre entreprise du Groupe EDF adhérente au Plan.</div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-btn open" onclick="tog(this)">
+      <span>🎁 1️⃣ Abondement sur l'intéressement 2026 (versé en 2027)</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="acc-body open">
+      <table>
+        <thead><tr><th>Tranche de versement (nets)</th><th>Taux</th><th>Abondement brut</th></tr></thead>
+        <tbody>
+          <tr><td>Les 100 premiers €</td><td><strong>115%</strong></td><td>115 € bruts</td></tr>
+          <tr><td>Au-delà des 100 premiers €</td><td><strong>15%</strong></td><td>15 € bruts / 100 €</td></tr>
+        </tbody>
+      </table>
+      <div class="ex">
+        <span class="ex-lbl">📌 Exemple concret</span>
+        Une salariée place <strong>1 000 € nets</strong> d'intéressement sur son PEG :<br>
+        → 115 € bruts (100 premiers €) + 15% × 900 € = 135 € bruts<br>
+        → <strong>Total abondement EDF : 250 € bruts</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-btn" onclick="tog(this)">
+      <span>🎁 2️⃣ Abondement sur les versements volontaires (hors CET)</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="acc-body">
+      <div class="amount-box">
+        <div class="am">30%</div>
+        <div class="lbl">du montant net versé — plafond annuel : <strong>210 € bruts</strong> (soit 700 € nets) — commun PEG + PERCO</div>
+      </div>
+      <div class="alert">⚠️ Ce plafond de <strong>210 € bruts est partagé PEG + PERCO</strong>. En cas de versements simultanés, l'abondement est réparti au prorata.</div>
+      <div class="ex">
+        <span class="ex-lbl">📌 Exemple versements simultanés</span>
+        Un salarié verse <strong>1 400 € nets sur le PEG</strong> et <strong>700 € nets sur le PERCO</strong> :<br>
+        Abondement total = 30% × 700 € = <strong>210 € bruts</strong>, réparti :<br>
+        → PEG (2/3) : <strong>140 € bruts</strong> | PERCO (1/3) : <strong>70 € bruts</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-btn" onclick="tog(this)">
+      <span>🎁 3️⃣ Abondement sur les transferts de jours CET</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="acc-body">
+      <div class="amount-box">
+        <div class="am">500 € max</div>
+        <div class="lbl">bruts/an — 100 €/jour pour les <strong>5 premiers jours</strong> transférés — commun PEG + PERCO</div>
+      </div>
+      <div class="ex">
+        <span class="ex-lbl">📌 Exemple CET simultané</span>
+        Un salarié transfère <strong>5 jours vers le PEG</strong> et <strong>10 jours vers le PERCO</strong> :<br>
+        Abondement max = 500 € réparti :<br>
+        → PEG (1/3) : <strong>167 € bruts</strong> | PERCO (2/3) : <strong>333 € bruts</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-btn" onclick="tog(this)">
+      <span>🏛️ Régime social et fiscal de l'abondement</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="acc-body">
+      <div class="pills">
+        <div class="pill"><span class="dot dt"></span> Non soumis aux cotisations sociales (Sécu)</div>
+        <div class="pill"><span class="dot do"></span> Soumis à CSG + CRDS (précomptées par EDF)</div>
+        <div class="pill"><span class="dot dt"></span> Non imposable à l'impôt sur le revenu</div>
+      </div>
+      <div class="alert alert-teal">✅ L'abondement améliore votre épargne sans alourdir votre impôt sur le revenu !</div>
+      <p style="margin-top:10px;font-size:.86rem">Plafond légal total : <strong>8% du PASS</strong> (≈ 3 845 € en 2026). L'abondement ne peut dépasser le triple de votre contribution personnelle.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PERCO -->
+<section id="perco" class="section">
+  <div class="banner">
+    <div class="ico">🏖️</div>
+    <div>
+      <span class="tag">AVENANT N°10 – RÈGLEMENT PERCO</span>
+      <h2>Plan d'Épargne Retraite Collectif Groupe (PERCO) – Abondement 2027</h2>
+      <p>Le PERCO est dédié à la <strong>retraite</strong> (fonds bloqués jusqu'à votre départ, sauf cas légaux). EDF SA abonde vos versements du <strong>1er janvier au 31 décembre 2027</strong>.</p>
+    </div>
+  </div>
+
+  <div class="fo-box">
+    <div class="fo-box-title">Ce qu'il <span class="fo-word">FO</span> retenir :</div>
+    <p>Mêmes taux d'abondement que le PEG, mais le <strong>plafond légal est deux fois plus élevé</strong> (16% du PASS). À noter : c'est l'<strong>intéressement 2025</strong> (et non 2026) qui est abondé sur le PERCO en 2027.</p>
+  </div>
+
+  <div class="acc">
+    <button class="acc-btn open" onclick="tog(this)">
+      <span>🎁 Règles d'abondement PERCO 2027 – Détail complet</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="acc-body open">
+      <div class="alert alert-red">📅 <strong>Point d'attention !</strong> Sur le PERCO, c'est l'intéressement de la <strong>période de référence 2025</strong> (versé en 2027) qui est abondé — contrairement au PEG (référence 2026).</div>
+
+      <p style="margin:14px 0 8px;font-weight:700;color:var(--fo-teal)">1️⃣ Intéressement (réf. 2025, versé en 2027)</p>
+      <table>
+        <thead><tr><th>Tranche (nets)</th><th>Taux</th><th>Abondement brut</th></tr></thead>
+        <tbody>
+          <tr><td>100 premiers €</td><td><strong>115%</strong></td><td>115 € bruts</td></tr>
+          <tr><td>Au-delà des 100 premiers €</td><td><strong>15%</strong></td><td>15 € / 100 € supplémentaires</td></tr>
+        </tbody>
+      </table>
+      <div class="ex">
+        <span class="ex-lbl">📌 Exemple</span>
+        Placement de <strong>1 000 € nets</strong> sur le PERCO :<br>
+        → 115 € + (15% × 900 €) = 135 € = <strong>250 € bruts d'abondement total</strong>
+      </div>
+
+      <p style="margin:16px 0 8px;font-weight:700;color:var(--fo-teal)">2️⃣ Versements volontaires (hors CET)</p>
+      <div class="amount-box">
+        <div class="am">30%</div>
+        <div class="lbl">du montant net — plafond 210 € bruts (700 € nets) commun PEG + PERCO</div>
+      </div>
+
+      <p style="margin:16px 0 8px;font-weight:700;color:var(--fo-teal)">3️⃣ Transferts jours CET</p>
+      <div class="amount-box">
+        <div class="am">500 € max</div>
+        <div class="lbl">bruts/an — 100 €/jour pour les 5 premiers jours, commun PEG + PERCO</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-btn" onclick="tog(this)">
+      <span>🔍 PERCO vs PEG : les différences clés</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="acc-body">
+      <table>
+        <thead><tr><th></th><th>PEG</th><th>PERCO</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Durée de blocage</strong></td><td>5 ans</td><td>Jusqu'à la retraite *</td></tr>
+          <tr><td><strong>Intéressement abondé</strong></td><td>Réf. 2026 (versé 2027)</td><td>Réf. 2025 (versé 2027)</td></tr>
+          <tr><td><strong>Taux (1ers 100 €)</strong></td><td>115%</td><td>115%</td></tr>
+          <tr><td><strong>Taux (au-delà)</strong></td><td>15%</td><td>15%</td></tr>
+          <tr><td><strong>Abondement volontaires</strong></td><td>30% – max 210 € bruts</td><td>30% – max 210 € bruts</td></tr>
+          <tr><td><strong>Abondement CET</strong></td><td>100 €/j – max 500 €</td><td>100 €/j – max 500 €</td></tr>
+          <tr><td><strong>Plafond légal</strong></td><td>8% PASS (≈ 3 845 €)</td><td><strong style="color:var(--fo-teal)">16% PASS (≈ 7 690 €)</strong></td></tr>
+          <tr><td><strong>Fiscalité abondement</strong></td><td>Exonéré IR, CSG/CRDS</td><td>Exonéré IR, CSG/CRDS</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.8rem;color:var(--muted);margin-top:8px">* Sauf cas légaux de déblocage anticipé (achat résidence principale, décès, invalidité, etc.)</p>
+      <div class="alert alert-teal" style="margin-top:10px">✅ <strong>Avantage PERCO :</strong> le plafond légal est <strong>deux fois supérieur</strong> au PEG. Si vous avez de la capacité d'épargne, le PERCO permet une contribution EDF SA potentiellement plus importante.</div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-btn" onclick="tog(this)">
+      <span>🏝️ Dispositions spécifiques – Service commun de Corse</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="acc-body">
+      <p>Les salariés du service commun EDF SA / ENGIE SA en Corse peuvent effectuer leurs versements sur le PERCO EDF. Le plafond des versements abondés par EDF SA est calculé au prorata de la <strong>clé de répartition "% électricité"</strong> de l'unité au 1er janvier de l'année.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SYNTHÈSE -->
+<section id="resume" class="section">
+  <div class="banner">
+    <div class="ico">📋</div>
+    <div>
+      <span class="tag">SYNTHÈSE GLOBALE</span>
+      <h2>Ce que ces 3 accords changent pour vous</h2>
+      <p>L'essentiel à retenir sur les trois projets d'avenants soumis à signature.</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="ch">💰 Intéressement 2026</div>
+      <div class="cb">
+        <p>6 critères fixés pour 2026. K1 plus ambitieux (EPR2, fiscalité INB). K2 évalue production, sécurité, résultat, commercial et RSE.</p>
+        <p>🗓️ Versement au plus tard le <strong>31 mai 2027</strong>. Répartition 50% uniforme / 50% salaire.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ch">📦 PEG 2027</div>
+      <div class="cb">
+        <p><strong>115%</strong> sur les 100 premiers € d'intéressement, puis <strong>15%</strong>. Volontaires à <strong>30%</strong> (max 210 € bruts). CET : 100 €/jour (max 500 €).</p>
+        <p>Plafond légal : 8% PASS. Valable tout 2027.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ch">🏖️ PERCO 2027</div>
+      <div class="cb">
+        <p>Mêmes taux que le PEG. Intéressement de référence : <strong>2025</strong>. Plafond légal <strong>deux fois plus élevé</strong> : 16% PASS (≈ 7 690 €).</p>
+        <p>Idéal pour booster votre épargne retraite.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stitle">📊 Tableau récapitulatif des abondements 2027</div>
+  <table>
+    <thead>
+      <tr><th>Type de versement</th><th>Taux</th><th>Plafond annuel</th><th>Plan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Intéressement – 100 premiers €</td><td><strong>115%</strong></td><td>115 € bruts</td><td>PEG + PERCO</td></tr>
+      <tr><td>Intéressement – au-delà de 100 €</td><td><strong>15%</strong></td><td>Sous réserve plafond légal</td><td>PEG + PERCO</td></tr>
+      <tr><td>Versements volontaires (hors CET)</td><td><strong>30%</strong></td><td>210 € bruts communs</td><td>PEG + PERCO</td></tr>
+      <tr><td>Transferts jours CET</td><td><strong>100 €/jour</strong></td><td>500 € bruts communs</td><td>PEG + PERCO</td></tr>
+    </tbody>
+  </table>
+
+  <div class="stitle">💡 Conseils FO pour optimiser votre épargne</div>
+  <div class="acc">
+    <button class="acc-btn open" onclick="tog(this)">
+      <span>Comment maximiser l'abondement EDF SA ?</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="acc-body open">
+      <ul style="margin-left:18px;font-size:.87rem;line-height:2.1;color:var(--text)">
+        <li>✅ Placez <strong>au minimum 100 € d'intéressement</strong> pour déclencher le taux max de 115%.</li>
+        <li>✅ Versez <strong>700 € de volontaires</strong> pour atteindre le plafond de 210 € d'abondement.</li>
+        <li>✅ Transférez des <strong>jours CET</strong> : jusqu'à 500 € d'abondement supplémentaire.</li>
+        <li>✅ <strong>Privilégiez le PERCO</strong> si vous avez de la capacité : plafond légal 2× supérieur.</li>
+        <li>⚠️ Les plafonds <strong>210 €</strong> et <strong>500 €</strong> sont <strong>communs PEG + PERCO</strong> — vigilance si vous versez sur les deux.</li>
+        <li>⚠️ Sur le PERCO, les fonds sont bloqués <strong>jusqu'à la retraite</strong> (hors déblocages légaux).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-btn" onclick="tog(this)">
+      <span>⚠️ Points de vigilance FO sur les critères d'intéressement 2026</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="acc-body">
+      <p>Les objectifs 2026 sont plus exigeants notamment en raison :</p>
+      <ul style="margin:10px 0 10px 20px;font-size:.87rem;line-height:1.95;color:var(--text)">
+        <li>Des <strong>investissements EPR2</strong> en hausse (impact sur l'EBITDA net)</li>
+        <li>De la <strong>mise en service de Flamanville 3</strong> (amortissements accrus, impact EBIT)</li>
+        <li>De la <strong>hausse de la fiscalité</strong> sur les installations nucléaires de base</li>
+        <li>De cibles de <strong>production électrique relevées</strong> (seuil 100% à 409,5 TWh)</li>
+      </ul>
+      <p style="font-size:.87rem">FO Énergie IPNN veille à ce que les objectifs restent atteignables et que les salariés ne soient pas pénalisés par des facteurs hors de leur contrôle.</p>
+    </div>
+  </div>
+
+  <div class="alert alert-teal" style="margin-top:18px;font-size:.9rem">
+    ✉️ <strong>Des questions ?</strong> Pour un rendez-vous personnalisé sur votre épargne salariale, contactez <strong style="color:var(--fo-teal)">dirin-dppi-dstid-fo@edf.fr</strong> — ou rapprochez-vous de votre délégué syndical FO Énergie IPNN.
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <strong>FO Énergie IPNN – Siège EDF</strong><br>
+  Document d'information rédigé à partir des projets d'avenants soumis à négociation. Ne constitue pas un document contractuel officiel.<br>
+  <div class="fslogan">Agir, ne pas subir !</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+  function tog(btn) {
+    const body = btn.nextElementSibling;
+    const open = btn.classList.contains('open');
+    btn.classList.toggle('open', !open);
+    body.classList.toggle('open', !open);
+  }
+</script>
+</body>
+</html>
